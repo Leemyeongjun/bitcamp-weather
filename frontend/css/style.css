@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    width: 500px;
+    height: 700px;
+    border: 3px solid lightblue;
+    position: absolute;
+    top: 30px;
+    left: 30%;
+    display: grid;
+    grid-template-rows: 50px 250px 210px 190px;
+}
+
+.main .header {
+    margin: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid lightblue;
+}
+
+.title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid lightblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.weather {
+    border-top: 3px solid lightblue;
+}
+
+.weather ul {
+    float: left;
+    border: 3px solid lightblue;
+    position: relative;
+    margin: 30px;
+    top: 30px;
+}
+
+.weather ul li {
+    text-align: center;
+    list-style: none;    
+    background: no-repeat center;
+}
+
+.wind {
+    position: relative;
+    top: 5px;
+    width: 100px;
+    height: 70px;
+}
+
+.humidity {
+    position: relative;
+    top: 5px;
+    width: 100px;
+    height: 70px;
+}
+
+.precipitation {
+    position: relative;
+    top: 5px;
+    width: 100px;
+    height: 70px;
+}
+
+.header {
+    /* border: 1px solid lightblue; */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.weatherBox {
+    margin-right: 70px;
+}
+
+.weatherImg {
+    background: no-repeat center;
+    width: 100px;
+    height: 100px;
+}
+
+.weatherText {
+    position: relative;
+    bottom: 10px;
+    right: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.weatherTmp {
+    margin-left: 70px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.footer {
+    border-top: 3px solid lightblue;
+}
