@@ -7,6 +7,8 @@ let precipitation = document.querySelector('.precipitation');
 
 let time = document.querySelector('.titleTime');
 
+let clockText = document.querySelector('.clockText');
+
 let info;
 
 let yyyy = 0,
@@ -59,7 +61,7 @@ let yyyy = 0,
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?" +
     "serviceKey=gYtciC7e5aLRxDH%2F37pIjbbu0gDYmKAKHcKOxNavvk03LeU5SrNJ6KTBlhHdbwNW5X0jNvvul4i3xo96OkMAGw%3D%3D" +
     "&pageNo=1" +
-    "&numOfRows=20" +
+    "&numOfRows=1000" +
     "&dataType=JSON" +
     "&base_date=" + newDate +
     "&base_time=" + baseTime +
@@ -91,6 +93,8 @@ let yyyy = 0,
       pop = parseInt(index.fcstValue);
     }
   });
+
+  console.log(tmp);
 
   document.querySelector('.weatherTmp').innerHTML = `${tmp}°`;
 
@@ -143,17 +147,25 @@ let yyyy = 0,
 
 })();
 
+function clock() {
 
-// (function() {
-//   let date = new Date();
+  let date = new Date();
 
-//   yyyy = date.getFullYear();
-//   mm = date.getMonth() + 1;
-//   dd = date.getDate();
+  yyyy = date.getFullYear();
+  mm = date.getMonth() + 1;
+  dd = date.getDate();
 
-//   hours = date.getHours();
-//   minutes = date.getMinutes();
-//   seconds = date.getSeconds();
+  hours = date.getHours();
+  minutes = date.getMinutes();
+  seconds = date.getSeconds();
+  clockText.innerHTML = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }:${seconds < 10 ? `0${seconds }`  : seconds }`;
+}
 
-//   time.innerHTML = yyyy + '-' + mm + '-' + dd;
-// })();
+function init() {
+
+  clock();
+  
+  setInterval(clock, 1000);
+}
+  
+init();
