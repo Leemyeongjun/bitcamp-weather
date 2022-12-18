@@ -32,7 +32,7 @@ let yyyy = 0,
   minutes = date.getMinutes();
   seconds = date.getSeconds();
 
-  newDate = yyyy.toString() + mm.toString() + dd.toString();
+  newDate = `${yyyy}${mm}${dd}`;
   console.log(newDate);
   time.innerHTML = yyyy + '-' + mm + '-' + dd;
 

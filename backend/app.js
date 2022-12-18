@@ -25,8 +25,8 @@ app.get('/weather', (req, res) => {
   request.get({
     uri: openApiUrl
   }, (error, reponse, body) =>{
-    res.send(JSON.stringify(body));
-    // res.send(body);
+    // res.send(JSON.stringify(body));
+    res.send(body);
   });
 });
 
