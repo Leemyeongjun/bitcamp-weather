@@ -4,12 +4,55 @@ let wind = document.querySelector('.wind');
 let windText = document.querySelector('.windText');
 let humidity = document.querySelector('.humidity');
 let precipitation = document.querySelector('.precipitation');
-let footer = document.querySelector('.footer');
+
+let time = document.querySelector('.titleTime');
 
 let info;
 
+let yyyy = 0,
+    mm = 0,
+    dd = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0,
+    newDate = 0;
+
 (function() {
   let xhr = new XMLHttpRequest();
+
+  let date = new Date();
+
+  yyyy = date.getFullYear();
+  mm = date.getMonth() + 1;
+  dd = date.getDate();
+
+  hours = date.getHours();
+  minutes = date.getMinutes();
+  seconds = date.getSeconds();
+
+  newDate = yyyy.toString() + mm.toString() + dd.toString();
+  console.log(newDate);
+  time.innerHTML = yyyy + '-' + mm + '-' + dd;
+
+  let baseTime;
+
+  if(hours >= 2 && hours < 5) {
+    baseTime = '0200';
+  } else if (hours >= 5 && hours < 8) {
+    baseTime = '0500';
+  } else if (hours >= 8 && hours < 11) {
+    baseTime = '0800';
+  } else if (hours >= 11 && hours < 4) {
+    baseTime = '1100';
+  } else if (hours >= 14 && hours < 17) {
+    baseTime = '1400';
+  } else if (hours >= 17 && hours < 20) {
+    baseTime = '1700';
+  } else if (hours >= 20 && hours < 23) {
+    baseTime = '2000';
+  } else if (hours >=23 && hours < 24) {
+    baseTime = '2300';
+  }
 
   xhr.open(
     "GET", 
@@ -18,8 +61,8 @@ let info;
     "&pageNo=1" +
     "&numOfRows=20" +
     "&dataType=JSON" +
-    "&base_date=20221217" +
-    "&base_time=0500" +
+    "&base_date=" + newDate +
+    "&base_time=" + baseTime +
     "&nx=60" +
     "&ny=127", false);
   xhr.send();
@@ -33,19 +76,19 @@ let info;
       sky = 0,
       pop = 0;
 
-  info.response.body.items.item.forEach((value) => {
-    if(value.category == 'TMP') {
-      tmp = parseInt(value.fcstValue);
-    } else if(value.category == 'REH') {
-      reh = parseInt(value.fcstValue);
-    } else if(value.category == 'WSD') {
-      wsd = value.fcstValue;
-    } else if(value.category == 'PTY') {
-      pty = parseInt(value.fcstValue);
-    } else if(value.category == 'SKY') {
-      sky = parseInt(value.fcstValue);
-    } else if(value.category == 'POP') {
-      pop = parseInt(value.fcstValue);
+  info.response.body.items.item.forEach((index) => {
+    if(index.category == 'TMP') {
+      tmp = parseInt(index.fcstValue);
+    } else if(index.category == 'REH') {
+      reh = parseInt(index.fcstValue);
+    } else if(index.category == 'WSD') {
+      wsd = index.fcstValue;
+    } else if(index.category == 'PTY') {
+      pty = parseInt(index.fcstValue);
+    } else if(index.category == 'SKY') {
+      sky = parseInt(index.fcstValue);
+    } else if(index.category == 'POP') {
+      pop = parseInt(index.fcstValue);
     }
   });
 
@@ -99,3 +142,18 @@ let info;
   precipitation.innerHTML = `${pop}%`;
 
 })();
+
+
+// (function() {
+//   let date = new Date();
+
+//   yyyy = date.getFullYear();
+//   mm = date.getMonth() + 1;
+//   dd = date.getDate();
+
+//   hours = date.getHours();
+//   minutes = date.getMinutes();
+//   seconds = date.getSeconds();
+
+//   time.innerHTML = yyyy + '-' + mm + '-' + dd;
+// })();

@@ -108,3 +108,7 @@
 .footer {
     border-top: 3px solid lightblue;
 }
+
+span {
+    padding: 20px;
+}

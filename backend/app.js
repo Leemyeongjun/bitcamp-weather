@@ -17,8 +17,8 @@ app.get('/weather', (req, res) => {
   "&pageNo=1" +
   "&numOfRows=10000" +
   "&dataType=JSON" +
-  "&base_date=20221217" +
-  "&base_time=0500" +
+  "&base_date=" + req.query.newDate +
+  "&base_time=" + req.query.baseTime +
   "&nx=60" +
   "&ny=127";
 
